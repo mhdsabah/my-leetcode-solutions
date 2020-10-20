@@ -1,0 +1,133 @@
+class Solution {
+ public  String intToRoman(int num) {
+        int d = num;
+        String s1 = Integer.toString(num);
+        int l = s1.length();
+        
+        String s2 ="1"; //zero
+        for (int i=1;i<l;i++)
+        {
+            s2=s2+"0";
+            
+        }
+        String s3="";//output
+        int k = Integer.parseInt(s2);//length of 1000
+        for (int i=k;i>0;i=i/10)
+        {
+            
+            int x = (d-(d%i));
+            int z;
+            int w;
+            int r;
+            int flag = 0;//greater than 50
+
+            if (x<10 || x==50 || x== 1000 || x== 500 || x== 100 || x== 50 || x== 40 || x== 90 || x== 400 || x== 900)
+            {
+            	z=x;
+            	w=1;
+            }
+            else if (x>50 && x<90) 
+            		{
+            			s3= s3+"L";
+            			r= x-50;
+
+            			w=r/i;
+            			z=r/w;
+
+            		}
+           else if (x>500 && x<900)
+            		{
+            			s3 = s3+"D";
+            			r=x-500;
+            			
+            			w=r/i;
+            			z=r/w;
+
+            		}
+            else if (x>5 && x<9)
+            		{
+            			s3 = s3+"V";
+            			r=x-5;
+            			w=r/i;
+            			z=r/w;
+
+            		}
+            else
+            		{
+            		 w = x/i;
+                     
+                      z = x/w;}
+
+
+           
+             switch (z)
+                {
+                case 1000:
+                for (int j=w;j>0;j--){
+
+                    s3=s3+"M";}
+                    break;
+                case 500:for (int j=w;j>0;j--){
+                    s3=s3+"D";}
+                    break;
+                case 100:for (int j=w;j>0;j--){
+                    s3=s3+"C";}
+                    break;
+                case 50:for (int j=w;j>0;j--){
+                    s3=s3+"L";}
+                    break;
+                case 10:for (int j=w;j>0;j--){
+                    s3=s3+"X";}
+                    break;
+                case 5:for (int j=w;j>0;j--){
+                    s3=s3+"V";}
+                    break;
+                    
+                case 40:for (int j=w;j>0;j--){
+                    s3=s3+"XL";}
+                    break;
+                case 90:for (int j=w;j>0;j--){
+                    s3=s3+"XC";}
+                    break;
+                case 400:for (int j=w;j>0;j--){
+                    s3=s3+"CD";}
+                    break;
+                case 900:for (int j=w;j>0;j--){
+                    s3=s3+"CM";}
+                    break;
+                case 1:for (int j=w;j>0;j--){
+                        s3=s3+"I";}
+                        break;
+                    case 2:for (int j=w;j>0;j--){
+                        s3=s3+"II";}
+                        break;
+                    case 3:for (int j=w;j>0;j--){
+                        s3=s3+"III";}
+                        break;
+                    case 4:for (int j=w;j>0;j--){
+                        s3=s3+"IV";}
+                        break;
+                    case 6:for (int j=w;j>0;j--){
+                        s3=s3+"VI";}
+                        break;
+                    case 7:for (int j=w;j>0;j--){
+                        s3=s3+"VII";}
+                        break;
+                    case 8:for (int j=w;j>0;j--){
+                        s3=s3+"VIII";}
+                        break;
+                    case 9:for (int j=w;j>0;j--){
+                        s3=s3+"IX";  }
+                        break;     
+                 default:
+             }   
+                 d=d%i;
+                    
+            }
+
+        System.out.println(s3);
+        return s3;
+        
+            
+        
+    }}
