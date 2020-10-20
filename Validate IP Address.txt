@@ -1,0 +1,225 @@
+import java.util.*;
+import java.util.Arrays;
+class Solution {
+    public String validIPAddress(String IP) {
+        String s = IP;
+        long k =s.length();
+          
+
+	
+        boolean iv4 = false;
+        boolean iv6 = false;
+        int bf4 = 0;
+        int bf6 = 0;
+        String rt ="Neither";
+        
+        
+        if (k<40)
+        {
+        for (int i=0;i<k;i++)
+        {
+            if (s.charAt(i) =='.' )
+                bf4++;
+            else if (s.charAt(i) == ':')
+                bf6++;
+            else 
+                continue;
+        }
+       
+       int v4 = 0; 
+        if (bf4 == 3 && bf6 == 0)
+            iv4 = true;
+        else if (bf4 == 0 && bf6 == 7)
+            iv6 =true;
+        
+        
+   
+        
+      if (iv4 == true)
+      {
+          String[] parts = s.split("\\.");
+          
+            
+          
+          int kl = parts.length;
+         
+          for (int i = 0;i<kl;i++)
+          {
+              String st = parts[i];
+              
+              if (st.length()>0)
+              {if (isValid(st))
+                    v4++;
+                else
+                    break;
+              }
+              else
+                  break;
+                  
+          }
+          
+        
+      }
+        int v6 = 0;
+        
+        if (iv6 == true)
+        {
+            String[] parts = s.split(":");
+            int kl = parts.length;
+            for (int i=0;i<kl;i++)
+            {
+                String st = parts[i];
+                
+                if (st.length()<5 && st.length()>0)
+                {
+                    if (isVSix(st))
+                    v6++;
+                    else
+                    break;
+                }
+                else
+                    break;
+                
+        }
+        }
+        
+        
+        
+        
+        
+        if (v4 == 4)
+        {
+            rt = "";
+            rt = "IPv4";
+        }
+        
+        if (v6 == 8)
+        {
+            rt ="";
+            rt = "IPv6";
+        }
+        }
+        else
+            return rt;
+        
+       
+		
+      
+        return rt;
+        
+        
+        
+    }
+
+        public boolean isValid(String a)//for ipv4
+        {
+            
+           
+             
+          int flag = 0;
+            int aa = a.length();
+            for (int i = 0;i<aa;i++)
+            {
+                char cj = a.charAt(i);
+                if (Character.isDigit(cj) == true)
+                {
+                    
+                    flag++;
+                }
+                else
+                    break;
+                    
+                
+            }
+              int ret = 0;
+            
+            if (flag == aa)
+            { 
+             int kk = Integer.parseInt(a);
+             if (kk>-1 && kk<256 )
+             {
+                 String kp = Integer.toString(kk);
+                 if (a.equals(kp))
+                    ret++;
+              
+             }
+             
+               
+            }
+            
+            if (ret!=0)
+                return true;
+            else
+                return false;
+                
+        }
+    public boolean isVSix(String a)
+    {
+        int flag = 0;
+        int aa = a.length();
+        for (int i=0;i<aa;i++)
+        {
+            char ck = a.charAt(i);
+            switch (ck)
+            {
+                     case '0':
+             
+                     case '1':
+             
+                    case '2':
+                        
+             
+                    case '3':
+             
+                    case '4':
+             
+                    case '5':
+             
+                    case '6':
+             
+                    case '7':
+             
+                      case '8':
+            
+                      case '9':
+                      case 'a':     
+                      case 'A':
+                      case 'b':
+                      case 'B':
+                      case 'c':
+                      case 'C':
+                      case 'd':
+                      case 'D':
+                      case 'e':
+                      case 'E':
+                      case 'f':
+                      case 'F':
+                                flag++;
+                                break;
+                    default :
+                    break;
+            }}
+                    
+                    if (flag == aa)
+                        return true;
+                    else
+                        return false;
+                    
+                    
+                    
+                    
+            
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
