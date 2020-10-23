@@ -1,0 +1,31 @@
+
+class Solution {
+public boolean isPalindrome(int x) {
+        String s1= Integer.toString(x);
+        String s2="";
+        char[] ar;
+        int k = s1.length();
+        ar = new char[k];
+        for (int i=k-1;i>=0;i--)
+        {
+        	char t;
+        	t = s1.charAt(i);
+        	s2=s2+t;
+        }int b;
+        	
+        	if (s1.equals(s2))
+        	{
+        		b =0;}
+        	else 
+        	{b=1;}
+
+        return (b==0);
+
+}
+
+
+
+
+
+
+	}
